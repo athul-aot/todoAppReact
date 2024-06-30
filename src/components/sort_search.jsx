@@ -14,6 +14,7 @@ function SearchSort({ handleSearch, handleSortChange }) {
         <button><img src={searchIcon} alt="search" /></button>
       </div>
       <div className='sort'>
+        <p>Sort by :</p>
         <select onChange={(e) => handleSortChange(e.target.value)}>
           <option value="desc">Newest First</option>
           <option value="asc">Oldest First</option>

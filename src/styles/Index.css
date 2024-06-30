@@ -17,6 +17,9 @@ body p {
 }
 body input {
   border: none;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 24px;
 }
 body input:focus {
   outline: none;
@@ -76,10 +79,12 @@ body input:focus {
 .search {
   display: flex;
   gap: 8px;
+  width: 100%;
   max-width: 578px;
   border-radius: 8px;
   border: 1px solid #cecece;
   padding: 10px 14px;
+  justify-content: space-between;
 }
 
 #search-task {
@@ -87,6 +92,33 @@ body input:focus {
   width: 100%;
   max-width: 522px;
   height: 24px;
+}
+
+.sort {
+  font-size: 0.875rem;
+  color: #09174A;
+  font-weight: 600;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  line-height: 17.07px;
+}
+.sort select {
+  height: 35px;
+  border: 1px solid #cecece;
+}
+.sort select option {
+  border: none;
+  font-family: "Montserrat", sans-serif;
+  background-color: #0C39C7;
+  border-radius: 5px;
+  font-size: 0.875rem;
+  color: white;
+  font-weight: 500;
+}
+.sort select:focus {
+  outline: none;
+  box-shadow: none;
 }
 
 .task-container {
@@ -103,6 +135,11 @@ body input:focus {
   width: 100%;
   display: flex;
   gap: 20px;
+  justify-content: space-between;
+  font-size: 1.125rem;
+  font-weight: 600;
+  line-height: 21.94px;
+  color: #8B8B8B;
 }
 
 .task-child {
@@ -137,15 +174,22 @@ body input:focus {
   gap: 12px;
 }
 
+.task-description {
+  font-size: 0.875rem;
+  font-weight: 400;
+  color: #475467;
+  line-height: 20px;
+}
+
 /* Index.css */
 /* Index.css */
 .task-card .card-date {
   max-width: 120px;
   display: flex;
   align-items: center;
-  gap: 5px;
-  padding: 5px 10px;
-  border-radius: 5px;
+  gap: 4px;
+  padding: 2px 8px;
+  border-radius: 4px;
 }
 
 .task-card .card-date img {
@@ -154,12 +198,12 @@ body input:focus {
 }
 
 .task-card .card-date.overdue {
-  background-color: #ffcccc; /* Light red background */
-  color: #ff0000; /* Red text color */
+  background: rgba(192, 53, 3, 0.0588235294); /* Light red background */
+  color: red; /* Red text color */
 }
 
 .task-card .card-date.overdue img {
-  filter: invert(33%) sepia(100%) saturate(7452%) hue-rotate(359deg) brightness(107%) contrast(113%);
+  filter: invert(33%) sepia(100%) saturate(7452%) hue-rotate(359deg) brightness(100%) contrast(113%);
   /* Red filter for the calendar icon */
 }
 
@@ -170,9 +214,45 @@ body input:focus {
   justify-content: space-between;
 }
 
+.task-card-text {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  font-size: 1.175rem;
+  line-height: 21.94px;
+  font-weight: 600;
+  color: #282829;
+}
+
+.indicator {
+  display: inline-block;
+  width: 11px;
+  height: 11px;
+  background-color: #EBB705;
+  border-radius: 50%;
+}
+
+.indicator.indicated {
+  display: inline-block;
+  width: 11px;
+  height: 11px;
+  background-color: #26AD13;
+  border-radius: 50%;
+}
+
 .task-card-buttons {
   display: flex;
   gap: 16px;
+}
+
+.cancel-btn {
+  border-radius: 8px;
+  padding: 10px 20px;
+  border: 1px solid #d0d5dd;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #7E7E7F;
 }
 
 input[type=checkbox] {
@@ -202,12 +282,15 @@ input[type=checkbox] {
   justify-content: center;
   align-items: center;
   background: rgba(0, 0, 0, 0.5);
+  z-index: 10;
 }
 
 .task-form {
   display: flex;
   flex-direction: column;
+  align-items: center;
   max-width: 654px;
+  width: 100%;
   border-radius: 12px;
   padding: 40px;
   gap: 32px;
@@ -216,20 +299,36 @@ input[type=checkbox] {
   border: 1px solid #cecece;
 }
 
+.desc-img {
+  display: flex;
+  gap: 5px;
+}
+
 .task-form-header {
   display: flex;
   justify-content: space-between;
   max-width: 574px;
+  width: 100%;
+}
+
+.task-form-header-title {
+  font-size: 1.25rem;
+  color: #09174A;
+  font-weight: 600;
+  line-height: 24.38px;
 }
 
 .task-form-inputs {
   max-width: 574px;
+  width: 100%;
   display: flex;
   flex-direction: column;
   gap: 32px;
 }
 
 .task-form-inputs-item {
+  max-width: 574px;
+  width: 100%;
   display: flex;
   flex-direction: column;
   gap: 6px;
@@ -288,13 +387,14 @@ input[type=checkbox] {
 
 .clear-tasks-button {
   display: flex;
-  background-color: blue;
-  margin-left: auto;
-  color: white;
+  grid-area: 8px;
+  color: #0C39C7;
   border: none;
-  padding: 8px 16px;
-  border-radius: 4px;
-  cursor: pointer;
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: 1px solid #0C39C7;
+  font-size: 0.875rem;
+  font-weight: 600;
 }
 
 /* DeleteConfirmation.css */
@@ -311,26 +411,55 @@ input[type=checkbox] {
 }
 
 .delete-confirmation-content {
+  width: 100%;
+  max-width: 654px;
   background: white;
-  padding: 20px;
+  padding: 40px;
   border-radius: 8px;
   text-align: center;
+  border-radius: 12px;
+  border: 1px solid #cecece;
+}
+.delete-confirmation-content p {
+  color: #09174A;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 19.5px;
+}
+
+.delete-title {
+  font-size: 1.175rem;
+  color: #09174A;
+  line-height: 21.94px;
+  font-weight: 600;
+}
+
+.delete-content-sub {
+  display: flex;
+  gap: 20px;
+  flex-direction: column;
+  align-items: center;
 }
 
 .confirm-button, .cancel-button {
+  color: #09174A;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 19.5px;
+  max-width: 94px;
   margin: 10px;
   padding: 10px 20px;
   border: none;
-  border-radius: 4px;
+  border-radius: 8px;
   cursor: pointer;
 }
 
 .confirm-button {
-  background-color: red;
+  background-color: #C0070B;
   color: white;
 }
 
 .cancel-button {
-  background-color: gray;
-  color: white;
+  color: #7E7E7F;
+  border: 1px solid #d0d5dd;
 }/*# sourceMappingURL=Index.css.map */

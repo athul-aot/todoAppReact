@@ -9,6 +9,7 @@ import checkedIcon from "../assets/checked.svg";
 function TaskCard({ task, editTaskHandle, toggleTaskStatus, handleDeleteClick }) {
   const isOverdue = new Date(task.dueDate) < new Date();
   const showOverdueStyle = isOverdue && !task.status;
+  const showCompletedStyle = task.status;
 
   return (
     <div className="task-card">
@@ -28,13 +29,14 @@ function TaskCard({ task, editTaskHandle, toggleTaskStatus, handleDeleteClick })
           <div className="task-card-title">
             <div className="task-card-text">
               <p>{task.title}</p>
+              <span className={`indicator ${showCompletedStyle ? 'indicated' : ''}`}></span>
             </div>
             <div className="task-card-buttons">
               <img src={editIcon} onClick={() => editTaskHandle(task)} alt="Edit" />
               <img src={deleteIcon} onClick={() => handleDeleteClick(task)} alt="Delete" />
             </div>
           </div>
-          <div>{task.description}</div>
+          <div className='task-description'>{task.description}</div>
           <div className={`card-date ${showOverdueStyle ? 'overdue' : ''}`}>
             <img src={calendarIcon} alt="Due Date" />
             <p>{task.dueDate}</p>

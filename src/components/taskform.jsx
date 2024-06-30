@@ -2,6 +2,7 @@ import React from "react";
 import { useEffect } from "react";
 import Input from "./input";
 import closeIcon from "../assets/close.svg";
+import helpIcon from "../assets/help.svg";
 function TaskForm({ closePopUp, addTask, editTask, taskToEdit }) {
   useEffect(() => {
     if (taskToEdit) {
@@ -47,12 +48,12 @@ function TaskForm({ closePopUp, addTask, editTask, taskToEdit }) {
     <div className="task-form-container">
       <div className="task-form">
         <div className="task-form-header">
-          <p>{taskToEdit ? "Edit Task" : "Add Task"}</p>
+          <p className="task-form-header-title">{taskToEdit ? "Edit Task" : "Add Task"}</p>
           <img src={closeIcon} alt="close" onClick={closePopUp} />
         </div>
         <div className="task-form-inputs">
           <div className="task-form-inputs-item">
-            <p>Title</p>
+            <p>Title *</p>
             <div className="input-parent">
               <Input
                 type={"text"}
@@ -63,15 +64,19 @@ function TaskForm({ closePopUp, addTask, editTask, taskToEdit }) {
             </div>
           </div>
           <div className="task-form-inputs-item">
+            <div className="desc-img">
             <p>Description</p>
+              <img src={helpIcon}/>
+            </div>
             <div className="input-parent">
-              <textarea
+              {/* <textarea
                 rows={3}
-                cols={69}
+                cols={55}
                 id="task-description"
                 className="input-parent"
                 placeholder="Add description"
-              ></textarea>
+              ></textarea> */}
+              <input type="text" placeholder="Add description" id="task-description"/>
             </div>
           </div>
           <div className="task-form-inputs-item">
@@ -81,7 +86,7 @@ function TaskForm({ closePopUp, addTask, editTask, taskToEdit }) {
             </div>
           </div>
           <div className="form-buttons">
-            <button onClick={closePopUp}>Close</button>
+            <button onClick={closePopUp} className="cancel-btn">Close</button>
             <button className="add-task" onClick={handleSubmit}>
               {taskToEdit ? "Update Task" : "Add Task"}
             </button>
